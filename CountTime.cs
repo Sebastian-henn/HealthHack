@@ -10,6 +10,7 @@ public class CountTime : MonoBehaviour
 	public FaceObject Happy = new FaceObject("Happy");
 	public FaceObject Sad = new FaceObject("Sad");
 	public FaceObject Confused = new FaceObject("Confused");
+
 	private FaceObject currentFace = new FaceObject("Current");
 	private Stopwatch attentionTimer = new Stopwatch();
 	private Stopwatch distractionTimer = new Stopwatch();
@@ -43,7 +44,7 @@ public class CountTime : MonoBehaviour
 			}
 
 			thisFace().counter = attentionTimer.Elapsed.TotalMilliseconds;
-			print ("Face = " + thisFace().name + " Counter =" + thisFace().counter);
+			//print ("Face = " + thisFace().name + " Counter =" + thisFace().counter);
 		} else {
 			attentionTimer.Stop();
 			distractionTimer.Start();
@@ -58,7 +59,10 @@ public class CountTime : MonoBehaviour
 	{
 		switch (this.tag) {
 		case "HappyTag":
+		{
+
 			return Happy;
+		}
 		case "SadTag":
 			return Sad;;
 		case "ConfusedTag":
