@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -25,6 +26,10 @@ public class CountTime : MonoBehaviour
 	
 	void Update () 
 	{
+		Slider slider1 = GameObject.Find ("Slider1").GetComponent<Slider>();
+		Slider slider2 = GameObject.Find ("Slider2").GetComponent<Slider>();
+		Slider slider3 = GameObject.Find ("Slider3").GetComponent<Slider>();
+
 
 		if (_gazeAware.HasGaze) {
 			attentionTimer.Start ();
@@ -44,12 +49,17 @@ public class CountTime : MonoBehaviour
 			}
 
 			thisFace().counter = attentionTimer.Elapsed.TotalMilliseconds;
+
+			slider1.value = (float)(Happy.counter)/5000;
+			slider2.value = (float)(Sad.counter)/5000;
+			slider3.value = (float)(Confused.counter)/5000;
+
 			//print ("Face = " + thisFace().name + " Counter =" + thisFace().counter);
 		} else {
 			attentionTimer.Stop();
 			distractionTimer.Start();
 
-			if(distractionTimer.ElapsedMilliseconds > 500) {
+			if(distractionTimer.ElapsedMilliseconds > 750) {
 				attentionTimer.Reset();
 			}
 		}
@@ -59,10 +69,7 @@ public class CountTime : MonoBehaviour
 	{
 		switch (this.tag) {
 		case "HappyTag":
-		{
-
 			return Happy;
-		}
 		case "SadTag":
 			return Sad;;
 		case "ConfusedTag":

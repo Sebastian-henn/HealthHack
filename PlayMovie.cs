@@ -7,6 +7,7 @@ public class PlayMovie : MonoBehaviour {
 			Renderer r = GetComponent<Renderer>();
 			MovieTexture movie = (MovieTexture)r.material.mainTexture;
 			
+
 			if (movie.isPlaying) {
 				movie.Pause();
 			}

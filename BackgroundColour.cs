@@ -27,10 +27,11 @@ public class BackgroundColour : MonoBehaviour
 	void Update()
 	{
 		float f1 = (float)obj1.GetComponent<CountTime>().thisFace().counter;
-		float f2 = (float)obj2.GetComponent<CountTime> ().thisFace().counter;
-		float f3 = (float)obj3.GetComponent<CountTime> ().thisFace().counter;
+		float f2 = (float)obj2.GetComponent<CountTime>().thisFace().counter;
+		float f3 = (float)obj3.GetComponent<CountTime>().thisFace().counter;
 		print (f1);
 		print (f2);
+		print (f3);
 
 		Color colourEnd = colourHappy;
 
@@ -41,8 +42,6 @@ public class BackgroundColour : MonoBehaviour
 		float lerp = Mathf.PingPong (value, duration) / duration;
 		
 		rend.material.color = Color.Lerp (colourStart,colourEnd,lerp);
-
-
 
 		//Color col = new Color (10, 10, value);
 		//rend.material.color = Color.green;

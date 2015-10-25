@@ -4,9 +4,8 @@ using System.Collections;
 public class MeshColour : MonoBehaviour
 {
 	public Color colourStart = Color.white;
-	public Color colourHappy = Color.green;
-	public Color colourSad = Color.blue;
-	public Color colourAngry = Color.red;
+	public Color colourEnd = Color.green;
+
 	public float duration = 1.0F;
 	
 	private Color currentColor;
@@ -23,19 +22,16 @@ public class MeshColour : MonoBehaviour
 	
 	void Update()
 	{
-		Color colourEnd = colourHappy;
-
 		FaceObject currentFace = this.GetComponent<CountTime> ().thisFace ();
 		float value = (float)((currentFace.counter / 5000));
 		if (value > duration)
 			value = duration;
-		
-		float lerp = Mathf.PingPong (value, duration) / duration;
 
+
+
+
+		float lerp = Mathf.PingPong (value, duration) / duration;
 		rend.material.color = Color.Lerp (colourStart,colourEnd,lerp);
 
-		backgroundRenderer.material.color = Color.Lerp (colourStart,colourEnd,lerp);
 	}
-	
-	
 }
